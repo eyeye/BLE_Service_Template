@@ -1,0 +1,44 @@
+{
+    "ProfileName": "BLE_Template",
+    "Services": [
+        {
+            "name": "DigtalIO",
+            "uuid": "0x0010",
+            "characteristics": [
+                {
+                    "name": "Input",
+                    "properties": {
+                        "broadcast":false,
+                        "read":true,
+                        "writeWithoutResponse":true,
+                        "write":true,
+                        "notify":true,
+                        "indicate":true,
+                        "authenticatedSignedWrites":false
+                    },
+                    "value": {
+                        "uuid": "0x0011",
+                        "length": 16
+                    }
+                },
+                {
+                    "name": "Output",
+                    "properties": {
+                        "broadcast":false,
+                        "read":true,
+                        "writeWithoutResponse":true,
+                        "write":true,
+                        "notify":true,
+                        "indicate":true,
+                        "authenticatedSignedWrites":false
+                    },
+                    "value": {
+                        "uuid": "0x0013",
+                        "length": 16
+                    }
+                }
+            ]
+        }
+
+    ]
+}

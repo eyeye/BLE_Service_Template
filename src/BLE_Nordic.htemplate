@@ -1,0 +1,32 @@
+
+
+#ifndef __BLE_{{service.name}}_H__
+#define __BLE_{{service.name}}_H__
+
+
+extern uint16_t BLE_{{service.name}}_Handle;
+
+{% for char in service.characteristics %}
+extern ble_gatts_char_handles_t BLE_{{service.name}}_{{char.name}}_Handle;
+extern uint8_t {{char.name}}_ValueBuffer[{{char.value.length}}];
+{% endfor %}
+
+
+{% for char in service.characteristics %}
+
+{% if char.properties.write %}
+extern void BLE_{{service.name}}_{{char.name}}_OnWrite(uint8_t* data, uint32_t length) __attribute__((weak));
+{% endif %}
+
+{% if char.properties.notify %}
+extern void BLE_{{service.name}}_{{char.name}}_OnConfirmation(void) __attribute__((weak));
+{% endif %}
+
+{% endfor %}
+
+uint32_t BLE_{{service.name}}_Init(void);
+uint32_t BLE_{{service.name}}_EventHandler(ble_evt_t * p_ble_evt);
+
+
+#endif
+
